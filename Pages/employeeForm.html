@@ -56,6 +56,36 @@
                       </label>
                 </div>
             </div>
+            <div class = "row-content">
+                <label class = "label text" for = "gender">Gender</label>
+                <div>
+                    <input type = "radio" id = "male" name = "gender" value = "male">
+                    <label type = "text" for = "male">Male</label>
+                    <input type = "radio" id = "female" name = "gender" value = "female">
+                    <label type = "text" for = "female">Female</label>
+                </div>
+            </div>
+            <div class = "row-content">
+                <label class = "label text" for = "department">Department</label>
+                <div>
+                    <input class = "checkbox" type = "checkbox" id = "hr" value = "HR" name = "hr">
+                    <label class = "text" for = "hr">HR</label> 
+                    <input class = "checkbox" type = "checkbox" id = "sales" value = "SALES" name = "sales">
+                    <label class = "text" for = "sales">SALES</label> 
+                    <input class = "checkbox" type = "checkbox" id = "finance" value = "FINANCE" name = "finance">
+                    <label class = "text" for = "finance">FINANCE</label> 
+                    <input class = "checkbox" type = "checkbox" id = "engineer" value = "ENGINEER" name = "engineer">
+                    <label class = "text" for = "engineer">ENGINEER</label> 
+                    <input class = "checkbox" type = "checkbox" id = "others" value = "OTHERS" name = "others">
+                    <label class = "text" for = "others">OTHERS</label> 
+                </div>
+            </div>
+            <div class = "row-content">
+                <label class = "label text" for = "salary">Choose your Salary</label>
+                <input class = "input" type = "range" min = "300000" max = "1000000" step = "10000"
+                name = "salary" id = "salary" value = "400000">
+                <output class = "salary-output text" for = "salary">400000</output>
+            </div>
         </form>
     </div>   
 </body>
