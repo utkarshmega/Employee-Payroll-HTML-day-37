@@ -58,9 +58,16 @@ class EmployeePayroll {
     }
     set startDate(startDate) {
         const options = { year: "numeric", month: "long", date: "numeric"};
-        const empDate = this.startDate === undefined ? "undefined" :
-                startDate.toLocaleDateString("en-US", options);
-        this._startDate = empDate;
+        if(startDate != undefined) {
+            if(startDate < new Date())
+            {
+                const empDate = this.startDate === "undefined" ? "undefined" :
+                    startDate.toLocaleDateString("en-US", options);
+                this._startDate = empDate;
+            }
+            else 
+                throw "Future Start date not valid. Enter correct joining date";
+        }
     }
 
     toString() {
