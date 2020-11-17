@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/payroll_form.css">
+  <script src="../js/EmployeePayroll.js"></script>
+  <script defer src="../js/payroll_form.js"></script>
   <title>Employee Payroll Form</title>
 </head>
 <body>
@@ -20,11 +22,12 @@
     </header>
     <div class = "form-content">
         <!-- UC2 -->
-        <form class = "form" action="#" onsubmit="save(event); return false">
+        <form class = "form" action="#" onsubmit="save(event)">
             <div class = "form-head">Employee Payroll form</div>
             <div class = "row-content">
                 <label class = "label text" for="name">Name</label>
                 <input class = "input" type = "text" id="name" name="name" placeholder="Your name..." required>
+                <error-output class = "text-error" for = "text"></error-output>
             </div>
             <div class = "row-content">
                 <!--UC3 -->
@@ -68,15 +71,15 @@
             <div class = "row-content">
                 <label class = "label text" for = "department">Department</label>
                 <div>
-                    <input class = "checkbox" type = "checkbox" id = "hr" value = "HR" name = "hr">
+                    <input class = "checkbox" type = "checkbox" id = "hr" value = "HR" name = "department">
                     <label class = "text" for = "hr">HR</label> 
-                    <input class = "checkbox" type = "checkbox" id = "sales" value = "SALES" name = "sales">
+                    <input class = "checkbox" type = "checkbox" id = "sales" value = "SALES" name = "department">
                     <label class = "text" for = "sales">SALES</label> 
-                    <input class = "checkbox" type = "checkbox" id = "finance" value = "FINANCE" name = "finance">
+                    <input class = "checkbox" type = "checkbox" id = "finance" value = "FINANCE" name = "department">
                     <label class = "text" for = "finance">FINANCE</label> 
-                    <input class = "checkbox" type = "checkbox" id = "engineer" value = "ENGINEER" name = "engineer">
+                    <input class = "checkbox" type = "checkbox" id = "engineer" value = "ENGINEER" name = "department">
                     <label class = "text" for = "engineer">ENGINEER</label> 
-                    <input class = "checkbox" type = "checkbox" id = "others" value = "OTHERS" name = "others">
+                    <input class = "checkbox" type = "checkbox" id = "others" value = "OTHERS" name = "department">
                     <label class = "text" for = "others">OTHERS</label> 
                 </div>
             </div>
@@ -140,8 +143,6 @@
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
                     </select>
                 </div>
             </div>
@@ -158,14 +159,6 @@
                 </div>
             </div>
         </form>
-        <script>
-            const salary = document.querySelector('#salary');
-            const output = document.querySelector('.salary-output');
-            output.textContent = salary.value;
-            salary.addEventListener('input', function() {
-                output.textContent = salary.value;
-            });
-        </script>
     </div>   
 </body>
 </html>
