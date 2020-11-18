@@ -26,7 +26,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 const save = (event) => {
     try {
         let employeePayrollData = createEmployeePayroll();
-        alert(employeePayrollData);
         createAndUpdateStorage(employeePayrollData);
         resetForm();
     } catch(error) {
