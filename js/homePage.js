@@ -12,9 +12,10 @@ const createInnerHtml = () => {
         <th>Salary</th>
         <th>Start Date</th>
         <th>Actions</th> `;
-
-        let empPayrollData = createEmployeePayrollDataJSON()[0];
-    const innerHtml = ` ${headerHtml}
+    let innerHtml = `${headerHtml}`;
+    let empPayrollList = createEmployeePayrollDataJSON();
+    for(const empPayrollData of empPayrollList){
+    innerHtml = ` ${innerHtml}
         <tr>
             <td><img class = "profile" alt ="" src = "${empPayrollData._profilePic}" alt = ""></td>
             <td>${empPayrollData._name}</td>
@@ -28,8 +29,9 @@ const createInnerHtml = () => {
                 <img id ="1" onclick="update(this)" alt ="edit" src = "../assets/icons/create-black-18dp.svg">
             </td>
         </tr> `;
+    }
     document.querySelector('#table-display').innerHTML = innerHtml;
-};
+}
 
 const createEmployeePayrollDataJSON = () => {
     let empPayrollListLocal = [
