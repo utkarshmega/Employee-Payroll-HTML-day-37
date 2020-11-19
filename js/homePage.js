@@ -1,6 +1,14 @@
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', (event) => { 
+    empPayrollList = getEmployeePayrollDataFromStorage();
+    document.querySelector(".emp-count").textContent = empPayrollList.length;
     createInnerHtml();
+    localStorage.removeItem('editEmp');
 });
+
+const getEmployeePayrollDataFromStorage = () => {
+    return localStorage.getItem('EmployeePayrollList') ? 
+                        JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}
 
 const createInnerHtml = () => {
     
@@ -12,16 +20,16 @@ const createInnerHtml = () => {
         <th>Salary</th>
         <th>Start Date</th>
         <th>Actions</th> `;
+    if(empPayrollList.length == 0) return;
     let innerHtml = `${headerHtml}`;
-    let empPayrollList = createEmployeePayrollDataJSON();
+    
     for(const empPayrollData of empPayrollList){
     innerHtml = ` ${innerHtml}
         <tr>
             <td><img class = "profile" alt ="" src = "${empPayrollData._profilePic}" alt = ""></td>
             <td>${empPayrollData._name}</td>
             <td>${empPayrollData._gender}</td>
-            <td><div class = "dept-label">${empPayrollData._department[0]}</div>
-                <div class = "dept-label">${empPayrollData._department[1]}</div></td>
+            <td>${getDeptHtml(empPayrollData._department)}</td>
             <td>${empPayrollData._salary}</td>
             <td>${empPayrollData._startDate}</td>
             <td>
@@ -31,31 +39,14 @@ const createInnerHtml = () => {
         </tr> `;
     }
     document.querySelector('#table-display').innerHTML = innerHtml;
-}
+};
 
-const createEmployeePayrollDataJSON = () => {
-    let empPayrollListLocal = [
-        {
-            _name: 'Utkarsh Agrawal' ,
-            _gender: 'Male',
-            _department: ['Engineer', 'Finance'],
-            _salary: '750000',
-            _startDate: '29 Oct 2020',
-            _note: 'HI',
-            _id: new Date().getTime(),
-            _profilePic: '../assets/profile-images/Ellipse -3.png'
-        },
-        {
-            _name: 'Shashank Singh' ,
-            _gender: 'Male',
-            _department: ['Finance'],
-            _salary: '510000',
-            _startDate: '15 July 2019',
-            _note: 'Hey',
-            _id: new Date().getTime(),
-            _profilePic: '../assets/profile-images/Ellipse -2.png'
-        }
-    ];
-    return empPayrollListLocal;
-}
+const getDeptHtml = (departmentList) => {
+    let departmentHtml = '';
+    for (const department of departmentList) {
+      departmentHtml = `${departmentHtml} <div class="dept-label">${department}</div>` 
+    }
+    return departmentHtml;
+  }
+
 
